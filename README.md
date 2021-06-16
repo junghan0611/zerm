@@ -4,7 +4,7 @@ my personal **fork** of a minimalist and dark theme for [Zola](https://getzola.o
 
 ![Screenshot](../master/zerm-preview.png?raw=true)
 
-[**Live Preview!**](https://zerm.ejmg.now.sh/)
+[**Live Preview!**](https://zwitt-zerm.netlify.app/)
 
 Largely a port of Radek Kozieł's [Terminal
 Theme](https://github.com/panr/hugo-theme-terminal) for Hugo.
