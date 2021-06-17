@@ -1,3 +1,10 @@
+.support_us {
+  &__content {
+    border: 2px dashed var(--accent-alpha-70);
+    padding: 20px;
+  }
+}
+
 .url_to_clipboard {
   margin-top: 20px;
 

@@ -112,6 +112,9 @@ menu_more = "show more"
 # Displayed after teaser text for a blog post.
 read_more = "read more"
 
+# Displayed on the separator of donation section, if you want this section
+support_us = "support us"
+
 # Displayed before input group for copying to clipboard the present URL
 url_to_clipboard = "Copy this page URL to your clipboard"
 
