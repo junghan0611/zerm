@@ -26,6 +26,7 @@ welcomed](https://github.com/ejmg/zerm/pulls).
 ## differences from ejmg port
 
 - math typesetting support with KaTeX.
+- copy URL to clipboard function at the end of every page.
 
 ## configuration
 
