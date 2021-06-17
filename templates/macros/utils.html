@@ -2,7 +2,25 @@
     ::
     {% if page.extra.author -%}
         {{ page.extra.author }}
-    {%- else -%}    
+    {%- else -%}
         {{ config.extra.author }}
     {%- endif -%}
 {%- endmacro author-%}
+
+{% macro url_to_clipboard() %}
+<div class="input-group">
+  <textarea id="url" readonly=true></textarea>
+  <button class="action" onclick="Copy()"><i class="gg-clipboard"></i></button>
+</div>
+
+<script>
+  var Url = document.getElementById("url");
+  Url.innerHTML = window.location.href;
+
+  function Copy() {
+    console.log("Copy " + Url.innerHTML + " to clipboard!");
+    Url.select();
+    document.execCommand("copy");
+  }
+</script>
+{%- endmacro url_to_clipboard %}

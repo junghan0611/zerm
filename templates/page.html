@@ -1,4 +1,5 @@
 {% import "macros/head.html" as head -%}
+{% import "macros/utils.html" as utils -%}
 {% extends "index.html" -%}
 
 {%- block math -%}
@@ -26,7 +27,18 @@
         <div class="post-content">
             {{ page.content | safe }}
         </div>
+
+        {%- block after_page -%}
+        <hr/>
         {# TODO: Decide if any sort of commenting functionality is desired? #}
-    {#%- include "snippets/comments.html"  -%#}
+        {#%- include "snippets/comments.html"  -%#}
+
+        {% if config.extra.url_to_clipboard %}
+        <div class="url_to_clipboard">
+          <div> {{ config.extra.url_to_clipboard }} </div>
+          {{ utils::url_to_clipboard() }}
+        </div>
+        {% endif %}
+        {%- endblock after_page -%}
 </div>
 {%- endblock main -%}

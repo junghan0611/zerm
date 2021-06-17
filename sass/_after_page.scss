@@ -1,0 +1,94 @@
+.url_to_clipboard {
+  margin-top: 20px;
+
+  div {
+    margin-top: 10px;
+  }
+}
+
+.input-group {
+  display: flex;
+  box-sizing: border-box;
+  word-wrap: break-word;
+
+  .action {
+    background: transparent;
+    color: var(--accent);
+    display: inline-flex;
+    border: 2px solid var(--accent);
+    border-radius: 0px;
+    height: 100%;
+    position: relative;
+    font-size: inherit;
+    cursor: pointer;
+    line-height: 20px;
+    font-size: 12px;
+    margin-left: auto;
+    margin-right: 1.5rem;
+    margin-top: auto;
+    margin-bottom: auto;
+    border-radius: 6px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    padding: 3px 12px;
+  }
+
+  textarea {
+    resize: none;
+    outline: none;
+    border: none;
+    background: var(--accent-alpha-20);
+    overflow: auto;
+    color: inherit;
+    width: 100%;
+    position: relative;
+    font-family: ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace;
+    font-size: 12px;
+    line-height: 20px;
+    min-height: 28px;
+    max-height: 30px;
+    padding: 5px 12px;
+    border-radius: 6px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    color: var(--color);
+  }
+}
+
+/* CSS Icons */
+ .gg-clipboard {
+ box-sizing: border-box;
+ position: relative;
+ display: block;
+ transform: scale(var(--ggs,1));
+ width: 18px;
+ height: 18px;
+ border: 2px solid;
+ border-radius: 2px
+}
+
+.gg-clipboard::after,
+.gg-clipboard::before {
+ content: "";
+ display: block;
+ box-sizing: border-box;
+ position: absolute;
+ border-radius: 2px;
+ width: 10px;
+ left: 2px
+}
+
+.gg-clipboard::before {
+ border: 2px solid;
+ border-bottom-left-radius: 3px;
+ border-bottom-right-radius: 3px;
+ top: -2px;
+ height: 6px
+}
+
+.gg-clipboard::after {
+ height: 2px;
+ background: currentColor;
+ box-shadow: 0 -4px 0 0;
+ bottom: 2px
+}
