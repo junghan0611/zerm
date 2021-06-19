@@ -1,0 +1,32 @@
+{% macro paginate() %}
+{% if page.earlier or page.later or page.lighter or page.heavier %}
+<div class="pagination">
+  {% if config.extra.read_other_posts %}
+  <div class="pagination__title">
+    <span class="pagination__title-h">{{ config.extra.read_other_posts }}</span>
+    <hr />
+  </div>
+  {% endif %}
+
+  <div class="pagination__buttons">
+    {% if page.later %}
+    <span class="button previous">
+      <a href="{{ page.later.permalink }}">
+        <span class="button__icon">←</span>
+        <span class="button__text">{{ page.later.title }}</span>
+      </a>
+    </span>
+    {% endif %}
+    {% if page.earlier %}
+    <span class="button previous">
+      <a href="{{ page.earlier.permalink }}">
+        <span class="button__icon">→</span>
+        <span class="button__text">{{ page.earlier.title }}</span>
+      </a>
+    </span>
+    {% endif %}
+
+  </div><!-- pagination buttons -->
+</div> <!-- pagination -->
+{% endif %}
+{% endmacro paginate %}
