@@ -1,0 +1,74 @@
+{% macro popover() %}
+<div class="header__search">
+  {# Search for DDG documentation if you need other params #}
+  {# https://duckduckgo.com/params #}
+  <div class="search-container hidden">
+    <form class="ddg" name="x" action="//duckduckgo.com/">
+      <!-- Target website -->
+      {% if config.extra.ddg_website %}
+      <input type="hidden" name="sites" value="{{ config.extra.ddg_website }}">
+      {% else %}
+      <input type="hidden" value="{{ config.base_url }}" name="sites"></input>
+      {% endif %}
+      <!-- Language -->
+      {% if config.extra.ddg_lang %}
+      <input type="hidden" value="{{ config.extra.ddg_lang }}" name="kl"></input><!-- Result lang -->
+      {% endif %}
+      <!-- Color settings -->
+      {% if config.extra.ddg_color_background %}
+      <input type="hidden" name="k7" value="{{ config.extra.ddg_color_background }}"/><!-- Background color -->
+      {% endif %}
+      {% if config.extra.ddg_color_header %}
+      <input type="hidden" name="kj" value="{{ config.extra.ddg_color_header }}"/><!-- Header color -->
+      {% endif %}
+      {% if config.extra.ddg_color_urls %}
+      <input type="hidden" name="kx" value="{{ config.extra.ddg_color_urls }}"/><!-- URLS color -->
+      {% endif %}
+      {% if config.extra.ddg_color_text %}
+      <input type="hidden" name="k8" value="{{ config.extra.ddg_color_text }}"/><!-- Text color -->
+      {% endif %}
+      {% if config.extra.ddg_color_links %}
+      <input type="hidden" name="k9" value="{{ config.extra.ddg_color_links }}"/><!-- Links color -->
+      {% endif %}
+      {% if config.extra.ddg_color_visited %}
+      <input type="hidden" name="kaa" value="{{ config.extra.ddg_color_visited }}"/><!-- Visited links color -->
+      {% endif %}
+
+      {% if config.extra.ddg_text_size %}
+      <input type="hidden" name="ks" value="{{ config.extra.ddg_text_size }}"/><!-- Visited links color -->
+      {% endif %}
+
+      <input type="hidden" value="1" name="kh"></input><!-- HTTPS On -->
+      <input type="hidden" value="1" name="kn"></input><!-- New Window -->
+      <input type="hidden" value="1" name="kac"></input><!-- Auto-suggest -->
+      <input type="hidden" value="-1" name="kf"></input><!-- Favicons -->
+
+      <input type="search" placeholder="Search" name="q" maxlenght="300"></input>
+      {% if config.extra.ddg_button %}
+      <button class="button" type="submit">Go</button>
+      {% endif %}
+    </form>
+
+    <div>
+    <div class="search-comment">Powered by DuckDuckGo</div>
+    </div>
+  </div>
+</div>
+{% endmacro popover %}
+
+{% macro script() %}
+<script type="text/javascript">
+// Search bar
+// TODO: extend to close when background is pressed
+var modal = document.getElementsByClassName('search-container')[0];
+
+function openSearchBar(){
+if (modal.classList.contains("hidden")) {
+    modal.classList.remove("hidden");
+}
+else {
+    modal.classList.add("hidden");
+}
+}
+</script>
+{% endmacro script %}

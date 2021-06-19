@@ -7,6 +7,7 @@
 {% import "macros/social.html" as social -%}
 {% import "macros/utils.html" as utils -%}
 {% import "macros/menu.html" as menu -%}
+{% import "macros/search.html" as search -%}
 {% import "macros/pagination.html" as pagination -%}
 {% import "macros/footer.html" as footer -%}
 {% import "macros/extended_footer.html" as extended_footer -%}
@@ -86,6 +87,10 @@
 
                         {%- block script -%}
                             {{ footer::script() }}
+                            
+                            {% if config.extra.ddg_search %}
+                            {{ search::script() }}
+                            {% endif %}
                         {%- endblock script -%}
                     </div>
                     {{ extended_footer::extended_footer() }}

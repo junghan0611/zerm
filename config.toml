@@ -115,9 +115,46 @@ read_more = "read more"
 # Displayed on the separator of donation section, if you want this section
 support_us = "support us"
 
+# Displayed on the separator of follow me section, if you want this section
+follow_me = "follow me"
+
 # Displayed before input group for copying to clipboard the present URL
 url_to_clipboard = "Copy this page URL to your clipboard"
 
 # not currently used from previous theme, but leaving here for now in case I
 # feel like adding it.
 read_other_posts = "read other posts"
+
+# Enable/Disable DDG search integration
+ddg_search = true
+
+# Set a custom website. Otherwise DDG will search on the `base_url`
+# ddg_website = "custom.website.com"
+
+# Set a language for your research
+# ddg_lang="en-en"
+
+# DDG colors
+# ddg_color_background
+# ddg_color_header
+# ddg_color_urls
+# ddg_color_text
+# ddg_color_links
+# ddg_color_visited
+
+# ddg_theme
+
+# Text size 
+#   n for Large (default)
+#   l for Larger
+#   t for Largest
+#   m for Medium
+#   s for Small 
+
+ddg_text_size = "l"
+
+# Add a "Go" button on side
+# ddg_button
+
+# Dark/Light mode switcher
+theme_switcher = false
