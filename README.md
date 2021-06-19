@@ -27,6 +27,8 @@ welcomed](https://github.com/ejmg/zerm/pulls).
 
 - math typesetting support with KaTeX.
 - copy URL to clipboard function at the end of every page.
+- pagination on pages.
+- support us box.
 
 ## configuration
 
