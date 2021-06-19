@@ -88,27 +88,33 @@
     {% endfor -%}
 {% endmacro tags %}
 
+{# Deprecated because requires parent dir name == slug #}
+{# set imgpath = detrailed_path ~ image #}{# former outside use #}
+{% macro detrailed_path(path) %}
+  {% set detrailed_path = path | trim_start_matches(pat="/") %}{# path = page.path #}
+{% endmacro %}
+
+{% macro parent_dir_rel_path(rel_path) %}
+  {% set post_relative_path_array = rel_path | split(pat="/")  %}
+  {% set parent_dir_idx = post_relative_path_array | length - 1 %}
+  {% set_global parent_dir_path_array = [] %}
+  {% for el in post_relative_path_array %}{% if loop.index <= parent_dir_idx %}
+  {% set_global parent_dir_path_array = parent_dir_path_array | concat(with=el) %}
+  {% endif %}{% endfor %}
+  {{ parent_dir_path_array | join(sep="/") }}
+{% endmacro parent_dir_rel_path %}
+
 {% macro cover(page, image) %}
 {% if image is matching("[.](jpg|jpeg|png|gif)$") %}
-  {% set detrailed_path = page.path | trim_start_matches(pat="/") %} {# <--- DIR NAME MUST BE THE SLUG #}
-  {% set imgpath = detrailed_path ~ image %}
-
-  {% set post_relative_path_array = page.relative_path | split(pat="/")  %}
-  {% set parent_dir_idx = post_relative_path_array | length - 1 %}
-
-  {# Get the parent dir relative path #}
-  {% set_global parent_dir_path_array = [] %}
-  {% for el in post_relative_path_array %}
-  {% if loop.index <= parent_dir_idx %}
-  {% set_global parent_dir_path_array = parent_dir_path_array | concat(with=el) %}
-  {% endif %}
-  {% endfor %}
-  {% set parent_dir_rel_path = parent_dir_path_array | join(sep="/") %}
+  {% set parent_dir_rel_path =
+    posts::parent_dir_rel_path(rel_path=page.relative_path) | trim
+    %}
 
   {%- if lang == config.default_language %}
       {% set imgpath = parent_dir_rel_path ~ "/" ~ image %}
   {% else %}
   {# TODO #}
+      {% set imgpath = parent_dir_rel_path ~ "/" ~ image %}
       {% set feature_image = page.components[1] ~ "/" ~ page.year ~ "/" ~ page.date ~ "-" ~ page.title ~ "/" ~ image %}
   {% endif %}
 
