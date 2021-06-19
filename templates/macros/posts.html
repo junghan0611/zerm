@@ -1,7 +1,7 @@
 {% macro section_meta(section, author) %}
     <div class="post-meta">
         <span class="post-date">
-            
+
             {%- if section.extra["date"] -%}
                 {{ section.extra["date"] | date(format="%Y.%m.%d") }}
                 {# end of section.date if-check #}
@@ -49,7 +49,7 @@
             {{ posts::categories(categories=taxonomy.categories) }}
             {# end if-check for categories #}
         {%- endif -%}
-        
+
         {% if taxonomy.tags -%}
             {{ posts::tags(tags=taxonomy.tags) }}
             {# end if-check for tags #}
@@ -87,3 +87,44 @@
         {# end of tags for-loop #}
     {% endfor -%}
 {% endmacro tags %}
+
+{% macro cover(page, image) %}
+{% if image is matching("[.](jpg|jpeg|png|gif)$") %}
+  {% set detrailed_path = page.path | trim_start_matches(pat="/") %} {# <--- DIR NAME MUST BE THE SLUG #}
+  {% set imgpath = detrailed_path ~ image %}
+
+  {% set post_relative_path_array = page.relative_path | split(pat="/")  %}
+  {% set parent_dir_idx = post_relative_path_array | length - 1 %}
+
+  {# Get the parent dir relative path #}
+  {% set_global parent_dir_path_array = [] %}
+  {% for el in post_relative_path_array %}
+  {% if loop.index <= parent_dir_idx %}
+  {% set_global parent_dir_path_array = parent_dir_path_array | concat(with=el) %}
+  {% endif %}
+  {% endfor %}
+  {% set parent_dir_rel_path = parent_dir_path_array | join(sep="/") %}
+
+  {%- if lang == config.default_language %}
+      {% set imgpath = parent_dir_rel_path ~ "/" ~ image %}
+  {% else %}
+  {# TODO #}
+      {% set feature_image = page.components[1] ~ "/" ~ page.year ~ "/" ~ page.date ~ "-" ~ page.title ~ "/" ~ image %}
+  {% endif %}
+
+  <img
+  alt="{{ page.title | striptags }}"
+  class="post-cover
+        {% if page.extra.cover_classes %}
+        {{ page.extra.cover_classes | join(sep=' ') }}
+        {% endif %}"
+  srcset="{{ resize_image(path=imgpath, op='fit', width=300, height=300) | safe }} 300w,
+          {{ resize_image(path=imgpath, op='fit', width=600, height=600) | safe }} 600w,
+          {{ resize_image(path=imgpath, op='fit', width=900, height=900) | safe }} 900w,
+          {{ resize_image(path=imgpath, op='fit', width=1200, height=1200) | safe }} 1200w,"
+  sizes="(max-width: 800px) 90vw,
+          1200px">
+{% elif image is matching("[.](svg)$") %}
+<img class="image" loading="lazy" alt="{{ page.title }}" src="{{ page.permalink }}{{ image }}">
+{% endif %}
+{% endmacro cover %}
