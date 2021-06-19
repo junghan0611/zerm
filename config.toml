@@ -157,4 +157,4 @@ ddg_text_size = "l"
 # ddg_button
 
 # Dark/Light mode switcher
-theme_switcher = false
+theme_switcher = true

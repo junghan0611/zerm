@@ -1,0 +1,41 @@
+{% macro button() %}
+<btn class="menu-trigger theme-switch-wrapper">
+  <label class="theme-switch" for="theme-mode-checkbox">
+  <input class="hidden" type="checkbox" id="theme-mode-checkbox" />
+  </label>
+  <span class="menu-icon">
+  <svg aria-hidden="true" focusable="false" data-icon="adjust" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <path fill="currentColor" d="M8 256c0 136.966 111.033 248 248 248s248-111.034 248-248S392.966 8 256 8 8 119.033 8 256zm248 184V72c101.705 0 184 82.311 184 184 0 101.705-82.311 184-184 184z"></path>
+  </svg>
+  </span>
+</btn>
+{% endmacro button %}
+
+{% macro script() %}
+<script type="text/javascript">
+// Theme switcher
+const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+const currentTheme = localStorage.getItem('theme');
+
+if (currentTheme) {
+    document.documentElement.setAttribute('data-theme', currentTheme);
+
+    if (currentTheme === 'dark') {
+        toggleSwitch.checked = true;
+    }
+}
+
+function switchTheme(e) {
+    if (e.target.checked) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+    }
+    else {
+      document.documentElement.setAttribute('data-theme', 'light');
+      localStorage.setItem('theme', 'light');
+    }
+}
+
+toggleSwitch.addEventListener('change', switchTheme, false);
+</script>
+{% endmacro script %}
