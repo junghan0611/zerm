@@ -1,19 +1,39 @@
 {% macro list_pages() %}
 <div class="posts">
-    
+
     {%- for page in paginator.pages -%}
-    
+
     <div class="post on-list">
         <h1 class="post-title">
             <a href="{{ page.permalink }}">{{ page.title }}</a>
         </h1>
-        
-        
+
         {{ posts::meta(page=page, author=config.extra.show_author) }}
-        
-        {#-                NOTE              -#}
-        {#- --------------------------------  -#}
-        {#- Skipping the Cover page implementation. Not included/covered for now. -#}
+
+        {% if config.extra.show_covers_in_lists %}
+        {% if page.extra.cover_image %}
+        {% if page.extra.cover_image is matching("[.](jpg|jpeg|png|gif)$") %}
+        {% set parent_dir_rel_path = posts::parent_dir_rel_path(rel_path=page.relative_path) | trim %}
+        {% set imgpath = parent_dir_rel_path ~ "/" ~ page.extra.cover_image %}
+
+        <a href="{{ page.permalink }}">
+        <img
+        alt="{{ page.title | striptags }}"
+        class="post-cover
+              {% if page.extra.cover_classes %}
+              {{ page.extra.cover_classes | join(sep=' ') }}
+              {% endif %}"
+        srcset="{{ resize_image(path=imgpath, op='fill', width=300, height=150) | safe }} 300w,
+                {{ resize_image(path=imgpath, op='fill', width=600, height=300) | safe }} 600w,
+                {{ resize_image(path=imgpath, op='fill', width=900, height=450) | safe }} 900w,
+                {{ resize_image(path=imgpath, op='fill', width=1200, height=600) | safe }} 1200w,"
+        sizes="(max-width: 800px) 90vw,
+                1200px"
+        />
+        </a>
+        {% endif %}{# matching #}
+        {% endif %}{# cover_image #}
+        {% endif %}{# show_covers_in_lists #}
 
         <div class="post-content">
             {%  if page.description -%}

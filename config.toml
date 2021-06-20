@@ -59,6 +59,9 @@ show_categories = true
 # Show tags a blog post is marked with in its meta data.
 show_tags = true
 
+# Show cover images in lists
+show_covers_in_lists = true
+
 # Theme color. You can have any color you want, so long as it's...
 # ["orange", "blue", "red", "green", "pink"]
 theme_color = "orange"
@@ -84,7 +87,6 @@ center = false
 
 # set a custom favicon. Must be placed in root of static/ directory...
 # favicon = ""
-
 
 # Set a custom preview image for your website when posted as a link.
 # Must be placed in root of static/ directory...

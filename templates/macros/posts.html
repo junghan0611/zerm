@@ -106,9 +106,7 @@
 
 {% macro cover(page, image) %}
 {% if image is matching("[.](jpg|jpeg|png|gif)$") %}
-  {% set parent_dir_rel_path =
-    posts::parent_dir_rel_path(rel_path=page.relative_path) | trim
-    %}
+  {% set parent_dir_rel_path = posts::parent_dir_rel_path(rel_path=page.relative_path) | trim %}
 
   {%- if lang == config.default_language %}
       {% set imgpath = parent_dir_rel_path ~ "/" ~ image %}
