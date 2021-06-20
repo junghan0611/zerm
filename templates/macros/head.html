@@ -2,7 +2,7 @@
 - [x] add rss
 - [x] favicons
 - [x] media preview
-- [ ] twitter
+- [x] twitter
 - [ ] maybe google adsense
 -#}
 
@@ -36,10 +36,30 @@
     <link rel="preload" href="/assets/fonts/FiraCode-Bold.woff" as="font" type="font/woff" crossorigin>
 {% endmacro fonts %}
 
+{% macro description() %}
+    {%- if section -%}
+        {%-  if section.description -%}
+            {{ section.description }}
+        {%- else -%}
+            {{ config.description }}
+        {%- endif -%}
+    {%- elif page -%}
+        {%- if page.description -%}
+            {{ page.description }}
+        {%- elif page.summary -%}
+            {{ page.summary | striptags | truncate(length=200) }}
+        {%- else -%}
+            {{ config.description }}
+        {%- endif -%}
+    {%- else -%}
+    {{ config.description }}
+    {%- endif -%}
+{% endmacro description %}
+
 {% macro general_meta() %}
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-    <meta name="description" content="{{ config.description }}"/>
+    <meta name="description" content="{{ head::description() }}"/>
 {% endmacro general_meta %}
 
 {% macro katex() %}
