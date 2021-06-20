@@ -95,12 +95,13 @@
 {% endmacro %}
 
 {% macro parent_dir_rel_path(rel_path) %}
-  {% set post_relative_path_array = rel_path | split(pat="/")  %}
-  {% set parent_dir_idx = post_relative_path_array | length - 1 %}
-  {% set_global parent_dir_path_array = [] %}
-  {% for el in post_relative_path_array %}{% if loop.index <= parent_dir_idx %}
-  {% set_global parent_dir_path_array = parent_dir_path_array | concat(with=el) %}
-  {% endif %}{% endfor %}
+  {%- set post_relative_path_array = rel_path | split(pat="/")  -%}
+  {%- set parent_dir_idx = post_relative_path_array | length - 1 -%}
+  {%- set_global parent_dir_path_array = [] -%}
+  {%- for el in post_relative_path_array %}{% if loop.index <= parent_dir_idx -%}
+  {%- set_global parent_dir_path_array = parent_dir_path_array | concat(with=el) -%}
+  {%- endif -%}
+  {%- endfor -%}
   {{ parent_dir_path_array | join(sep="/") }}
 {% endmacro parent_dir_rel_path %}
 
