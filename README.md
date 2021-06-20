@@ -31,6 +31,8 @@ welcomed](https://github.com/ejmg/zerm/pulls).
 - support us box.
 - theme switcher for dark/light mode.
 - duckduckgo search popover.
+- highly optimized cover images for posts and lists.
+- 404 template.
 
 ## configuration
 
