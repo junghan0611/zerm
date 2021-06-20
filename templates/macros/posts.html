@@ -111,9 +111,10 @@
   {%- if lang == config.default_language %}
       {% set imgpath = parent_dir_rel_path ~ "/" ~ image %}
   {% else %}
-  {# TODO #}
-      {% set imgpath = parent_dir_rel_path ~ "/" ~ image %}
-      {% set feature_image = page.components[1] ~ "/" ~ page.year ~ "/" ~ page.date ~ "-" ~ page.title ~ "/" ~ image %}
+    {# TODO #}
+    {% set imgpath = parent_dir_rel_path ~ "/" ~ image %}
+    {# Alternative? I hope the first one will work with every case #}
+    {# set feature_image = page.components[1] ~ "/" ~ page.year ~ "/" ~ page.date ~ "-" ~ page.title ~ "/" ~ image #}
   {% endif %}
 
   <img
