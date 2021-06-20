@@ -49,11 +49,7 @@
 
           <div class="support_us__content">
             {%- block support_us_content -%}
-            {#- TODO pass to snippet -#}
-            <p> Loved this post? </p>
-            <i class="gg-coffee"></i>
-            <p> Buy a coffee for us! </p>
-            <p> (Extend this block) </p>
+            {% include "snippets/support_us.html" %}
             {%- endblock support_us_content -%}
           </div><!-- Support us content -->
         </div>
@@ -78,7 +74,7 @@
 
         <div class="follow_me">
             {%- block follow_me_content -%}
-            Let's keep in touch <a href="/">here</a> and <a href="/">here</a>
+            {% include "snippets/follow_me.html" %}
             {%- endblock follow_me_content -%}
         </div>
         {% endif %}
