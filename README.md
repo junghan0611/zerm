@@ -26,10 +26,10 @@ welcomed](https://github.com/ejmg/zerm/pulls).
 ## differences from ejmg port
 
 - math typesetting support with KaTeX.
-- copy URL to clipboard function at the end of every page.
-- pagination on pages.
-- support us box.
-- theme switcher for dark/light mode.
+- copy URL to clipboard function at the end of the page.
+- pagination at the end of the page.
+- optional `support us` and `follow me` boxes at the end of the page.
+- theme switcher for dark/light mode (this requires a custom colorscheme).
 - duckduckgo search popover.
 - highly optimized cover images for posts and lists.
 - 404 template.
