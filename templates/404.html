@@ -27,7 +27,19 @@
           <ul>
             {{ menu::items(menu=config.extra.main_menu) }}
           </ul>
-      {% endif -%}  
+      {% endif -%}
+
+    {% if config.extra.ddg_search %}
+    <p>
+      Otherwise, you can search all over the website with DuckDuckGo.
+    </p>
+
+    <div class="search-container">
+    {{ search::form() }}
+    <div><div class="search-comment">Powered by DuckDuckGo</div></div>
+    </div>
+
+    {% endif %}
     </div>
 </div>
 {%- endblock main -%}
