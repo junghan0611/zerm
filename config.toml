@@ -114,6 +114,9 @@ menu_more = "show more"
 # Displayed after teaser text for a blog post.
 read_more = "read more"
 
+# Displayed for any blog post without description.
+read_post = "read post"
+
 # Displayed on the separator of donation section, if you want this section
 support_us = "support us"
 

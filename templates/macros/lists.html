@@ -35,17 +35,25 @@
         {% endif %}{# cover_image #}
         {% endif %}{# show_covers_in_lists #}
 
+        {% set show_read_more_btn = true %}
+
         <div class="post-content">
             {%  if page.description -%}
             {{ page.description }}
-            {#- end if-check for description -#}
-            {%  elif page.summary -%}
-            {{ page.summary | safe }}
+            {% elif page.summary %}
+            {{ page.summary | striptags }}
+            {% else %}
+            {% set show_read_more_btn = false %}
             {%  endif -%}
         </div>
-        {% if page.description or page.summary -%}
+
+        {% if show_read_more_btn %}
         <div>
-            <a class="read-more button" href="{{ page.permalink }}">{{ config.extra.read_more }} →</a>
+          <a class="read-more button" href="{{ page.permalink }}">{{ config.extra.read_more }} →</a>
+        </div>
+        {% else %}
+        <div>
+          <a class="read-more button" href="{{ page.permalink }}">{{ config.extra.read_post }} →</a>
         </div>
         {% endif -%}
     </div>
