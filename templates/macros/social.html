@@ -34,8 +34,8 @@
 
 {% macro og_image() %}
   {%- if section -%}
-    {%- if config.extra.og_preview_img -%}
-      {{ get_url(path=config.extra.og_preview_img) }}
+    {%- if config.extra.og_image -%}
+      {{ get_url(path=config.extra.og_image) }}
     {%- endif -%}
   {%- elif page -%}
     {%- if page.extra.cover_image -%}
