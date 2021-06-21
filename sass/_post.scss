@@ -210,3 +210,11 @@
     text-decoration: underline;
   }
 }
+
+// Color inversion for mostly black images on dark themes
+// You can add `invert` class with a simple shortcode or manually
+[data-theme="dark"] {
+  .invert img {
+    filter: invert(.8);
+  }
+}
