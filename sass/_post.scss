@@ -58,6 +58,7 @@
     
     a {
       text-decoration: none;
+      background: var(--head1-bg);
     }
   }
 
@@ -90,6 +91,24 @@
 
   &-content {
     margin-top: 30px;
+    
+    img, video, iframe {
+      border: 2px solid var(--accent-alpha-70);
+      padding: 20px;
+      max-width: 100%;
+      
+      @media (max-width: $phone-max-width) {
+      	padding: 10px;
+      }
+    }
+
+    mark {
+      background: var(--mark);
+      color: var(--highlight);
+      border-bottom: .05rem solid var(--mark-border);
+      border-radius: .1rem;
+      padding: .05rem .1rem 0;
+    }
   }
 
   &-cover {
@@ -100,7 +119,6 @@
 
     @media (max-width: $phone-max-width) {
       padding: 10px;
-      border-width: 10px;
     }
   }
 
@@ -159,7 +177,17 @@
   }
 }
 
+.post.on-list {
+  .post-title a {
+    background: none;
+  }
+}
+
 .post-list {
+  .post-title .a {
+    background: none;
+  }
+
   .post-date {
     color: var(--accent-alpha-70);
     text-decoration: none;
