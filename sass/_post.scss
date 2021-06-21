@@ -102,6 +102,11 @@
       }
     }
 
+    figcaption {
+      background: var(--accent-alpha-20);
+      color: inherit;
+    }
+
     mark {
       background: var(--mark);
       color: var(--highlight);
@@ -114,7 +119,7 @@
   &-cover {
     border: 20px solid var(--accent);
     background: transparent;
-    margin: 40px 0;
+    margin: 15px 0;
     padding: 20px;
 
     @media (max-width: $phone-max-width) {
