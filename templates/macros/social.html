@@ -34,11 +34,13 @@
 
 {% macro og_image() %}
   {%- if section -%}
-    {%- if config.extra.og_image -%}
-      {{ get_url(path=config.extra.og_image) }}
+    {%- if config.extra.og_preview_img -%}
+      {{ get_url(path=config.extra.og_preview_img) }}
     {%- endif -%}
   {%- elif page -%}
-    {%- if page.extra.cover_image -%}
+    {%- if page.extra.og_image -%}
+      {{ get_url(path=page.extra.og_image) }}  
+    {%- elif page.extra.cover_image -%}
       {{ get_url(path=page.extra.cover_image) }}
     {%- endif -%}
   {%- endif -%}
