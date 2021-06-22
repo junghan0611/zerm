@@ -30,6 +30,7 @@ welcomed](https://github.com/ejmg/zerm/pulls).
 - pagination at the end of the page.
 - optional `support us` and `follow me` boxes at the end of the page.
 - theme switcher for dark/light mode (this requires a custom colorscheme).
+- elasticlunr js search implemented according to the [zola documentation](https://www.getzola.org/documentation/content/search/).
 - duckduckgo search popover.
 - highly optimized cover images for posts and lists.
 - 404 template.
@@ -41,6 +42,21 @@ theme](https://www.getzola.org/documentation/themes/installing-and-using-themes/
 
 In `config.toml`, you will find all values for customization that are supported
 thus far have documentation explaining how they are used. If there is any confusion or something is not working as intended, [please open an issue](https://github.com/ejmg/zerm/issues)!
+
+### search 
+Elasticlunr uses JS to search on an indexed version of the website;
+you have to enable the generation of the index by zola with this
+parameter:
+```
+# /config.toml
+
+# Whether to build a search index to be used later on by a JavaScript library
+build_search_index = true
+```
+
+If you're running your site in other default language other than English, 
+you **must** change the `search_index.LANG.js` line in `index.html`, 
+setting up `LANG` accordingly.
 
 ## license
 
