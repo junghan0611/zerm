@@ -1,0 +1,77 @@
+.search-popover {
+  position: absolute;
+  --shadow-color: var(--accent-alpha-70);
+  --shadow: 0 10px var(--shadow-color), -10px 10px var(--shadow-color), 10px 10px var(--shadow-color);
+  box-shadow: var(--shadow);
+  color: var(--color);
+  margin: 0;
+  z-index: 99;
+  top: 50px;
+  right: 0;
+}
+
+.search-container {
+  background: var(--background);
+  border: 2px solid;
+  padding: 10px;
+  width: 100%;
+
+  input {
+    background-color: var(--background);
+    color: var(--base);
+    border: none;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-bottom: solid 2px var(--accent);
+
+    &:focus-visible {
+      outline: none;
+    }
+  }
+
+  .search-comment {
+    margin-top: 10px;
+    font-size: .8rem;
+    color: var(--accent-alpha-70);
+  }
+}
+
+.search {
+  background-color: var(--background);
+  position: relative;
+  overflow: hidden;
+  transition: width .9s ease; /* doesn't work. Why? */
+
+  &.open {
+    width: 100%;
+    max-width: 300px;
+
+    .search-box {
+      display: inherit;
+      width: 100%;
+    }
+  }
+}
+
+.search-box {
+  display: none;
+  box-shadow: none;
+  border: none;
+  background: transparent;
+  color: #fff;
+  &:focus {
+    outline: none;
+  }
+}
+
+.search-results__items {
+  list-style: none;
+}
+
+.search-results__item {
+  margin: 10px;
+  a {
+    color: var(--accent);
+    font-weight: bold;
+  }
+}
