@@ -123,7 +123,7 @@
 {% if config.build_search_index %}
 <script src="{{ get_url(path='assets/js/search.js', trailing_slash=false) | safe }}"></script>
 <script defer src="{{ get_url(path='elasticlunr.min.js', trailing_slash=false) | safe }}"></script>
-{%- if config.default_language or config.default_language != "en" -%}
+{%- if config.default_language and config.default_language != "en" -%}
 {%- set search_index_file = "search_index." ~ config.default_language ~ ".js" %}
 {%- set lunr_lang_file = "assets/js/lunr-languages/lunr." ~ config.default_language ~ ".min.js" -%}
 <script defer src="{{ get_url(path='assets/js/lunr-languages/lunr.stemmer.support.min.js', trailing_slash=false) | safe }}"></script>
