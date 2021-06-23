@@ -68,6 +68,15 @@
 {% endmacro form %}
 
 {% macro results() %}
+<div class="search-results__not-found" style="text-align: center">
+  <div>
+    {%- if config.extra.not_found_message -%}
+    {{ config.extra.not_found_message }}
+    {%- else -%}
+    0 results with this keywords.
+    {%- endif -%}
+  </div>
+</div>
 <div class="search-results">
   <div class="search-results__items"></div>
 </div>
