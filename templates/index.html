@@ -93,8 +93,10 @@
                         {%- block script -%}
                             {{ footer::script() }}
 
-                            {% if config.extra.ddg_search %}
+                            {% if config.build_search_index %}
                             {{ search::script() }}
+                            {% elif config.extra.ddg_search %}
+                            {{ search::ddg_script() }}
                             {% endif %}
 
                             {% if config.extra.theme_switcher %}

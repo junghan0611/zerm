@@ -72,6 +72,15 @@ Multilanguage supported with those available:
 
 Just select a `default_language` accordingly to make it work!
 
+![elasticlunr italian search](elasticlunr-mode.gif "Elasticlunr Search")
+
+If you don't want to make use of javascript on your website
+or for any other personal reason, you could set up a DuckDuckGo
+search form. Design will be soon updated to make everything
+uniform.
+
+![DuckDuckGo search mode](ddg-mode.gif "DDG Search")
+
 ## license
 
 MIT. See `LICENSE.md` for more details.

@@ -158,9 +158,6 @@ ddg_search = true
 
 ddg_text_size = "l"
 
-# Add a "Go" button on side
-# ddg_button
-
 # Dark/Light mode switcher
 theme_switcher = true
 

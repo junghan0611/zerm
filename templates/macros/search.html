@@ -1,6 +1,6 @@
 {% macro button() %}
 <div class="menu-trigger search">
-  <input id="search" type="search" class="input-large search-query search-box">
+  {{ search::form() }}
   <span class="menu-icon search-button">
   <svg aria-hidden="true" focusable="false" data-icon="search" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
     <path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path>
@@ -9,10 +9,27 @@
 </div>
 {% endmacro button %}
 
+{% macro ddg_button() %}
+<div class="menu-trigger search">
+  {{ search::ddg_form() }}
+  <span class="menu-icon search-button">
+  <svg aria-hidden="true" focusable="false" data-icon="search" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path>
+  </svg>
+  </span>
+</div>
+{% endmacro ddg_button %}
+
+{% macro form() %}
+<form class="form-search">
+  <input id="search" type="search" class="input-large search-query search-box">
+</form>
+{% endmacro form %}
+
 {# Search for DDG documentation if you need other params #}
 {# https://duckduckgo.com/params #}
 {% macro ddg_form() %}
-<form class="ddg" name="x" action="//duckduckgo.com/">
+<form class="ddg form-search" name="x" action="//duckduckgo.com/">
   <!-- Target website -->
   {% if config.extra.ddg_website %}
   <input type="hidden" name="sites" value="{{ config.extra.ddg_website }}">
@@ -52,26 +69,27 @@
   <input type="hidden" value="1" name="kac"></input><!-- Auto-suggest -->
   <input type="hidden" value="-1" name="kf"></input><!-- Favicons -->
 
-  <input type="search" placeholder="Search" name="q" maxlenght="300"></input>
-  {% if config.extra.ddg_button %}
-  <button class="button" type="submit">Go</button>
-  {% endif %}
-</form>
+  <input id="search" class="input-large search-query search-box" type="search" placeholder="Search" name="q" maxlenght="300"></input>
 
-<div><div class="search-comment">Powered by DuckDuckGo</div></div>
+  <button class="button ddgicon hidden" type="submit" style="background: inherit; margin: 0; color: inherit; font-size: inherit">
+  <span class="menu-icon"><!-- DDG icon appears when focusing -->
+  <!-- Made with Inkscape <3 -->
+  <svg viewBox="0 0 29.99824 30.022148" version="1.1" id="svg5" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+    <defs id="defs2"/>
+    <g id="layer1" transform="translate(-10.955817,-9.016551)">
+      <path fill="currentColor" d="m 24.13612,38.978146 c -3.405192,-0.466142 -6.446854,-1.955591 -8.800937,-4.309678 -2.419323,-2.419319 -3.913842,-5.535037 -4.322689,-9.011769 -0.113529,-0.965459 -0.04795,-3.23615 0.120634,-4.176723 1.120878,-6.253798 5.910493,-11.082192 12.15387,-12.2522693 1.062317,-0.1990957 3.243005,-0.2752795 4.304901,-0.1504061 6.05293,0.7117949 11.024564,4.8287894 12.765005,10.5706614 0.491367,1.621073 0.597152,2.398071 0.597152,4.386267 0,1.512491 -0.02397,1.891117 -0.167253,2.642589 -1.195337,6.269094 -5.901637,10.987156 -12.134948,12.165273 -0.959476,0.181333 -3.603048,0.260991 -4.515732,0.136065 z m -1.922953,-1.461941 c 0,-0.0223 -0.403415,-1.890099 -0.896475,-4.150662 -2.012041,-9.224709 -2.28682,-10.837585 -2.110901,-12.390503 0.244327,-2.156822 1.425811,-3.401459 3.79619,-3.999102 l 0.525876,-0.132599 -0.525876,-0.05915 c -0.289233,-0.03254 -1.175502,-0.03751 -1.969489,-0.01112 -1.277796,0.04256 -1.438546,0.03489 -1.399492,-0.06689 0.06617,-0.172463 0.407875,-0.322729 1.018401,-0.447879 0.640523,-0.131292 1.636891,-0.475539 1.636891,-0.565539 0,-0.0343 -0.261998,-0.123838 -0.582218,-0.198965 -0.435528,-0.102174 -0.86141,-0.134714 -1.690315,-0.129156 -0.609453,0.0041 -1.108097,-0.0063 -1.108097,-0.02291 0,-0.01678 0.132927,-0.2261 0.295405,-0.46535 l 0.295407,-0.435008 0.68123,-0.09764 c 0.85094,-0.121964 1.516547,-0.06813 2.324993,0.188089 1.288312,0.408298 2.503447,1.090946 3.438735,1.931834 0.262277,0.235805 0.619849,0.473155 0.826377,0.548534 1.095719,0.39992 1.620349,0.752199 2.155044,1.447074 1.033508,1.343124 1.799777,3.533325 1.795453,5.131892 l -0.0022,0.799295 0.83724,-0.256013 c 1.999472,-0.611402 2.827928,-0.792434 3.445596,-0.752922 0.605179,0.03873 1.074513,0.210865 1.217849,0.446674 0.280824,0.462028 -1.19182,1.281954 -3.989739,2.221378 -1.61341,0.541713 -1.897523,0.583659 -3.223195,0.475895 -0.602165,-0.04895 -1.129898,-0.06735 -1.172742,-0.04087 -0.128655,0.07951 -0.01133,0.629945 0.177279,0.832297 0.221603,0.237635 0.732391,0.498929 1.295124,0.662519 0.580231,0.16867 1.620589,0.156835 3.199759,-0.03642 1.41552,-0.173226 2.25624,-0.195217 2.388979,-0.06246 0.172005,0.172004 0.103329,0.486404 -0.153436,0.702462 -0.311988,0.262521 -0.736028,0.44284 -1.672096,0.711045 -2.284913,0.654678 -3.286845,0.595642 -5.56858,-0.32811 -0.549717,-0.222549 -1.0176,-0.386522 -1.039739,-0.364385 -0.08724,0.08724 -0.03361,1.536173 0.07881,2.129195 0.179655,0.947608 0.540562,2.0179 0.68046,2.0179 0.06399,0 0.208076,0.05418 0.320171,0.120394 0.200795,0.118608 0.215049,0.113028 0.960535,-0.375407 0.955502,-0.626054 1.690602,-0.976334 1.905682,-0.90807 0.326437,0.103612 0.398558,0.479429 0.403928,2.10485 0.0044,1.344706 -0.0098,1.527965 -0.134474,1.718616 -0.13042,0.199618 -0.163548,0.210559 -0.512669,0.169215 -0.205285,-0.0243 -0.759896,-0.175928 -1.232488,-0.336929 l -0.859259,-0.292726 0.200447,0.346191 c 0.420309,0.725868 1.452115,2.26188 1.519411,2.26188 0.03871,0 0.420171,-0.121049 0.847688,-0.269014 3.918909,-1.356276 7.178279,-4.590146 8.54995,-8.483061 C 40.975276,23.733892 39.825618,18.238759 36.17018,14.377041 31.06869,8.9876694 22.657858,8.4965688 16.952854,13.254956 c -5.938557,4.953183 -6.729879,13.840314 -1.762641,19.795721 0.966572,1.158857 2.203234,2.213925 3.575068,3.050099 0.840918,0.512562 1.412161,0.781531 2.47123,1.163569 0.776889,0.280248 0.976626,0.331739 0.976626,0.251767 z m 0.869952,-13.849014 c 0.12726,-0.07761 0.292802,-0.270522 0.367866,-0.428706 0.122487,-0.258117 0.125712,-0.318473 0.03156,-0.588639 -0.1836,-0.526709 -0.79042,-0.789097 -1.267112,-0.547885 -0.238274,0.120569 -0.528132,0.550125 -0.528132,0.782669 0,0.450661 0.480889,0.923661 0.939065,0.923661 0.123947,0 0.329498,-0.06349 0.456762,-0.1411 z m -0.218868,-0.885046 c -0.09333,-0.09333 -0.05074,-0.384346 0.06259,-0.427835 0.25364,-0.09734 0.494789,0.176386 0.330162,0.374751 -0.0901,0.10856 -0.307863,0.137983 -0.392767,0.05309 z m 6.647778,0.07641 c 0.473214,-0.453367 0.113399,-1.303454 -0.551703,-1.303454 -0.123337,0 -0.312634,0.09359 -0.471596,0.233156 -0.220795,0.193865 -0.265553,0.283762 -0.265553,0.533389 0,0.243385 0.05017,0.350393 0.264931,0.565162 0.233408,0.233409 0.297373,0.259668 0.537602,0.220683 0.149971,-0.02432 0.368815,-0.136348 0.486319,-0.248936 z m -0.358163,-0.659622 c -0.0748,-0.194933 0.03003,-0.356032 0.214636,-0.329821 0.124165,0.01765 0.169367,0.07417 0.169367,0.211867 0,0.137678 -0.0452,0.194236 -0.169367,0.211868 -0.101586,0.01438 -0.18748,-0.02315 -0.214636,-0.09391 z m -7.980771,-1.73188 c 0.352677,-0.297362 0.697185,-0.425004 1.177456,-0.436247 0.400545,-0.0094 0.40675,-0.01264 0.194519,-0.103243 -0.721426,-0.307895 -1.767606,0.187065 -1.754523,0.830078 0.0041,0.202234 0.01329,0.212783 0.06802,0.07766 0.03481,-0.086 0.17632,-0.251711 0.314521,-0.36823 z m 7.24972,-0.639831 c 0.298005,0 0.628548,0.03298 0.734534,0.07327 0.26093,0.09921 0.246016,-0.02506 -0.02626,-0.218959 -0.481136,-0.342599 -1.202124,-0.234848 -1.503864,0.224753 l -0.117714,0.179306 0.185757,-0.129178 c 0.133798,-0.09304 0.337292,-0.129178 0.727579,-0.129178 z" id="path157"/>
+    </g>
+  </svg>
+  </span>
+  </button>
+</form>
 {% endmacro ddg_form %}
-
-{% macro form() %}
-<form class="form-search">
-  <input id="search" type="text" class="input-large search-query">
-</form>
-{% endmacro form %}
 
 {% macro results() %}
 <div class="search-results__not-found" style="text-align: center">
   <div>
     {%- if config.extra.not_found_message -%}
-    {{ config.extra.not_found_message }}
+    {{ config.extra.search_not_found_message }}
     {%- else -%}
     0 results with this keywords.
     {%- endif -%}
@@ -89,7 +107,6 @@
     {% if config.build_search_index %}
     {{ search::results() }}
     {% elif config.extra.ddg_search %}
-    {{ search::ddg_form() }}
     {% endif %}
   </div>
 </div>
@@ -99,7 +116,6 @@
 <script type="text/javascript">
 !function () {
   function t() {
-    search_button && search_button.classList.toggle('hidden'),
     search_popover && search_popover.classList.toggle('hidden'),
     c && c.classList.toggle('hidden'),
     search_bar && search_bar.classList.toggle('open'),
@@ -126,7 +142,6 @@
     t()
   })
 }();
-
 </script>
 
 {% if config.build_search_index %}
@@ -143,3 +158,37 @@
 {%- endif -%}
 {% endif %}
 {% endmacro script %}
+
+{% macro ddg_script() %}
+<script type="text/javascript">
+!function () {
+  function t() {
+    search_button && search_button.classList.toggle('hidden'),
+    ddg_icon && ddg_icon.classList.toggle('hidden'),
+    c && c.classList.toggle('hidden'),
+    search_bar && search_bar.classList.toggle('open'),
+    search_box.focus();
+  }
+  var n = document.querySelector('.container'),
+  ddg_icon = document.querySelector('.ddgicon'),
+  search_bar = document.querySelector('.search'),
+  search_box = document.querySelector('.search-box'),
+  search_button = document.querySelector('.search-button'),
+  c = document.querySelector('.menu__sub-inner-more');
+
+  ddg_icon && ddg_icon.addEventListener('click', function (e) {
+    return e.stopPropagation()
+  }),
+  document.body.addEventListener('click', function () {
+    !c || c.classList.contains('hidden') ? !ddg_icon.classList.contains('hidden') && search_button.classList.add('hidden') : c.classList.add('hidden'), search_bar.classList.remove('open'), ddg_icon.classList.add('hidden'), search_button.classList.remove('hidden')
+  }),
+  search_bar && search_bar.addEventListener('click', function (e) {
+    return e.stopPropagation()
+  }),
+  search_button && search_button.addEventListener('click', function (e) {
+    e.stopPropagation(),
+    t()
+  })
+}();
+</script>
+{% endmacro ddg_script %}

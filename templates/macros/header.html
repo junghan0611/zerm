@@ -6,8 +6,10 @@
         </div>
         <div class="menu-trigger">menu</div>
 
-        {% if config.extra.ddg_search %}
-        {{ search::button() }}
+        {% if config.build_search_index %}
+          {{ search::button() }}
+        {% elif config.extra.ddg_search %}
+          {{ search::ddg_button() }}
         {% endif %}
 
         {% if config.extra.theme_switcher %}
@@ -20,7 +22,7 @@
         {{ menu::menu() }}
     {% endif -%}
 
-    {% if config.extra.ddg_search %}
+    {% if config.build_search_index %}
     {{ search::popover() }}
     {% endif %}
 </header>
