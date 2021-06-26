@@ -55,7 +55,7 @@
       width: 100%;
       border-bottom: var(--border);
     }
-    
+
     a {
       text-decoration: none;
       background: var(--head1-bg);
@@ -91,12 +91,12 @@
 
   &-content {
     margin-top: 30px;
-    
+
     img, video, iframe {
       border: 2px solid var(--accent-alpha-70);
       padding: 20px;
       max-width: 100%;
-      
+
       @media (max-width: $phone-max-width) {
       	padding: 10px;
       }
@@ -155,7 +155,44 @@
         }
       }
     }
-  }
+  }  // ul lists
+
+  blockquote {
+    p:first-of-type:before {
+      content: '>';
+      display: block;
+      position: absolute;
+      left: -25px;
+      color: var(--accent);
+    }
+
+    &.twitter-tweet {
+      position: relative;
+      background-color: var(--accent-alpha-20);
+      font: inherit;
+      color: inherit;
+      border: 1px solid var(--accent);
+      padding-top: 60px;
+
+      p:before {
+        content: '';
+      }
+
+      &:before {
+        font: inherit;
+        content: '> From Twitter:';
+        position: absolute;
+        top: 20px;
+        left: inherit;
+        color: var(--accent);
+        font-weight: bold;
+      }
+
+      a {
+        color: var(--accent);
+      }
+    }
+  }  // blockquote for twitter shortcode
 }
 
 // TODO: try adapting this using a properly nested selector in the block above
