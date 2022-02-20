@@ -38,6 +38,9 @@
 
         {%- block css -%}
             {{ head::styling() }}
+	    {%- if config.extra.external_links_styling -%}
+	    {{ head::external_links_styling() }}
+	    {%- endif -%}
         {%- endblock css -%}
 
         {%- block favicon -%}

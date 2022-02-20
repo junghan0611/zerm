@@ -19,6 +19,23 @@
     {% endif %}
 {% endmacro styling %}
 
+{% macro external_links_styling() %}
+<style>
+a[href^="https://"]:not(:where(
+  /* exclude hash only links */
+  [href^="#"],
+  /* exclude relative but not double slash only links */
+  [href^="/"]:not([href^="//"]),
+  /* domains to exclude */
+  {%- for domain in config.extra.internal_domains -%}
+  [href*="{{ domain }}"],
+  {%- endfor -%}
+)):after {
+  content: "" var(--external-link-image);
+}
+</style>
+{% endmacro external_links_styling %}
+
 {% macro favicon() %}
     {%- if config.extra.favicon is defined -%}
         <link rel="shortcut icon" href="{{ get_url(path=config.extra.favicon) }}" type="image/x-icon" />

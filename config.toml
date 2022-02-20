@@ -72,6 +72,11 @@ theme_color = "orange"
 # than placing in static/
 # custom_css = "custom.css"
 
+# External links styling
+# (show an arrow in every link with relative domains and `internal_domains` excluded)
+external_links_styling = false
+internal_domains = []
+
 # Enable math inside articles with `math=true` property
 enable_katex = true
 
