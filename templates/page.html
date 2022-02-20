@@ -78,6 +78,14 @@
             {%- endblock follow_me_content -%}
         </div>
         {% endif %}
+
+	{% if config.extra.newsletter %}
+	<div class="support_us__content">
+	    {%- block newsletter -%}
+	    {% include "snippets/newsletter.html" %}
+	    {%- endblock newsletter -%}
+	</div><!-- newsletter -->
+	{% endif %}
         {%- endblock after_page -%}
 </div>
 {%- endblock main -%}
