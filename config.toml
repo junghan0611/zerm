@@ -36,7 +36,7 @@ highlight_theme = "axar" # Other dark themes that work: "1337", "agola-dark",
                          # "visual-studio-dark"
 
 # Whether to build a search index to be used later on by a JavaScript library
-build_search_index = true
+build_search_index = false
 
 # Built in taxonomies of zerm.
 taxonomies = [
@@ -79,9 +79,6 @@ theme_color = "orange"
 # (show an arrow in every link with relative domains and `internal_domains` excluded)
 external_links_styling = false
 internal_domains = []
-
-# Enable math inside articles with `math=true` property
-enable_katex = true
 
 # How many menu items to show on desktop. if you set this to 0, only submenu
 # button will be visible.
@@ -141,6 +138,10 @@ read_other_posts = "read other posts"
 
 # Enable/Disable DDG search integration
 ddg_search = true
+
+# Enable math typesetting with KaTeX
+# Show math in pages with `math=true` in the TOML frontmatter
+enable_katex = true
 
 # Set a custom website. Otherwise DDG will search on the `base_url`
 # ddg_website = "custom.website.com"

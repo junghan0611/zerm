@@ -286,3 +286,318 @@
     filter: invert(.8);
   }
 }
+@import "variables";
+
+// .posts {
+//   margin: 0 auto;
+// }
+
+.post {
+  width: 100%;
+  text-align: left;
+  margin: 20px auto;
+  padding: 20px 0;
+
+  @media (max-width: $tablet-max-width) {
+    max-width: 660px;
+  }
+
+  &:not(:last-of-type) {
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  // %meta {
+  //   font-size: 1rem;
+  //   margin-bottom: 10px;
+  //   color: var(--accent-alpha-70);
+  // }
+
+  // &-meta {
+  //   @extend %meta;
+  // }
+  // &-meta-inline {
+  //   @extend %meta;
+
+  //   display: inline;
+  // }
+
+  &-meta {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: var(--accent-alpha-70);
+  }
+
+  &-title {
+    --border: 3px dotted var(--accent);
+    position: relative;
+    color: var(--accent);
+    margin: 0 0 15px;
+    padding-bottom: 15px;
+    border-bottom: var(--border);
+
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: 2px;
+      display: block;
+      width: 100%;
+      border-bottom: var(--border);
+    }
+
+    a {
+      text-decoration: none;
+      background: var(--head1-bg);
+    }
+  }
+
+  // %tags {
+  //   margin-bottom: 20px;
+  //   font-size: 1rem;
+  //   opacity: .5;
+  // }
+
+  &-tags {
+    display: block;
+    margin-bottom: 20px;
+    font-size: 1rem;
+    opacity: .5;
+
+    a {
+        text-decoration: none;
+    }
+  }
+
+  // &-tags-inline {
+  //   @extend %tags;
+
+  //   display: inline;
+
+  //   @media (max-width: $phone-max-width) {
+  //     display: block;
+  //   }
+  // }
+
+  &-content {
+    margin-top: 30px;
+
+    img, video, iframe {
+      border: 2px solid var(--accent-alpha-70);
+      padding: 20px;
+      max-width: 100%;
+
+      @media (max-width: $phone-max-width) {
+      	padding: 10px;
+      }
+    }
+
+    figcaption {
+      background: var(--accent-alpha-20);
+      color: inherit;
+    }
+
+    mark {
+      background: var(--mark);
+      color: var(--highlight);
+      border-bottom: .05rem solid var(--mark-border);
+      border-radius: .1rem;
+      padding: .05rem .1rem 0;
+    }
+  }
+
+  &-cover {
+    border: 20px solid var(--accent);
+    background: transparent;
+    margin: 15px 0;
+    padding: 20px;
+
+    @media (max-width: $phone-max-width) {
+      padding: 10px;
+    }
+  }
+
+  ul {
+    list-style: none;
+
+    li:before {
+      content: '⦿';
+      position: absolute;
+      left: -20px;
+      color: var(--accent);
+    }
+    ul {
+
+      li:before {
+        content: '■';
+        position: absolute;
+        left: -20px;
+        color: var(--accent);
+      }
+
+      ul {
+
+        li:before {
+          content: '►';
+          position: absolute;
+          left: -20px;
+          color: var(--accent);
+        }
+      }
+    }
+  }  // ul lists
+
+  blockquote {
+    p:first-of-type:before {
+      content: '>';
+      display: block;
+      position: absolute;
+      left: -25px;
+      color: var(--accent);
+    }
+
+    &.social, &.twitter-tweet {
+      position: relative;
+      background-color: var(--accent-alpha-10);
+      font: inherit;
+      color: inherit;
+      border: 1px solid var(--accent);
+      padding-top: 60px;
+      padding-right: 10px;
+
+      p:before {
+        content: '';
+      }
+
+      &:before {
+        font: inherit;
+        position: absolute;
+        top: 20px;
+        left: inherit;
+        color: var(--accent);
+        font-weight: bold;
+      }
+
+      a {
+        color: var(--accent);
+      }
+
+      &.twitter-tweet, &.tw {
+	&:before {
+          content: '> From Twitter:';
+	}
+      }  // twitter
+
+      &.fb {
+	&:before {
+          content: '> From Facebook:';
+	}
+      }
+
+    } // blockquote for social content (fb, tw...) shortcode
+
+    &.disclaimer {
+      position: relative;
+      font: inherit;
+      color: inherit;
+      padding-top: 60px;
+
+      p:before {
+        content: '';
+      }
+      &:before {
+        font: inherit;
+        content: '-> Disclaimer!';
+        position: absolute;
+        top: 20px;
+        left: inherit;
+        font-weight: bold;
+      }
+
+      &.red {
+      	border: 1px solid var(--red);
+
+	&:before {
+	  color:var(--red);
+  	}
+
+	a {
+          color: var(--red);
+      	}
+      }      
+
+      &.yellow {
+      	border: 1px solid var(--yellow);
+
+	&:before {
+	  color:var(--yellow);
+  	}
+
+	a {
+          color: var(--yellow);
+      	}
+      }
+      
+    }  // blockquote for disclaimer shortcodes
+
+  } // blockquote for shortcodes
+}
+
+// TODO: try adapting this using a properly nested selector in the block above
+//       for ul items.
+.tag-list {
+    @media(max-width: $phone-max-width) {
+        margin-left: 5%;
+    }
+}
+
+.post--regulation {
+  h1 {
+    justify-content: center;
+  }
+
+  h2 {
+    justify-content: center;
+    margin-bottom: 10px;
+
+    &+ h2 {
+      margin-top: -10px;
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.post.on-list {
+  .post-title a {
+    background: none;
+  }
+}
+
+.post-list {
+  .post-title .a {
+    background: none;
+  }
+
+  .post-date {
+    color: var(--accent-alpha-70);
+    text-decoration: none;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .post-list-title {
+    text-decoration: underline;
+  }
+
+  .post-tag {
+    text-decoration: underline;
+  }
+}
+
+// Color inversion for mostly black images on dark themes
+// You can add `invert` class with a simple shortcode or manually
+[data-theme="dark"] {
+  .invert img {
+    filter: invert(.8);
+  }
+}

@@ -1,6 +1,6 @@
 # zerm
 
-my personal **fork** of a minimalist and dark theme for [Zola](https://getzola.org).
+my **fork** of a minimalist and dark theme for [Zola](https://getzola.org).
 
 ![Screenshot](../master/zerm-preview.png?raw=true)
 
@@ -17,7 +17,6 @@ emphasize minimalism even more. Some of them are as follows:
 - tags are now included in a post's meta data.
 - categories are included in the taxonomy.
 - bullet points have slightly more margin and different symbols for nesting.
-- no comment support.
 
 Some of these might be added later and [PR's are always
 welcomed](https://github.com/ejmg/zerm/pulls).
@@ -33,7 +32,7 @@ welcomed](https://github.com/ejmg/zerm/pulls).
 - search supports [multilanguage](#elasticlunr-multilang-support) thanks to [Lunr languages](https://github.com/weixsong/lunr-languages) integration.
 - [duckduckgo search](#duckduckgo-search).
 - highly optimized cover images for posts and lists.
-- 404 template.
+- 404 template (now in upstream, but here still different)
 
 ## configuration
 Please follow the Zola documentation for [how to use a
