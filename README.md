@@ -24,7 +24,7 @@ welcomed](https://github.com/ejmg/zerm/pulls).
 
 ## differences from ejmg port
 
-- math typesetting support with KaTeX.
+- math typesetting support with KaTeX (now merged in upstream)
 - copy URL to clipboard function at the end of the page.
 - pagination at the end of the page.
 - optional `support us` and `follow me` boxes at the end of the page.
@@ -36,7 +36,6 @@ welcomed](https://github.com/ejmg/zerm/pulls).
 - 404 template.
 
 ## configuration
-
 Please follow the Zola documentation for [how to use a
 theme](https://www.getzola.org/documentation/themes/installing-and-using-themes/#installing-a-theme).
 
@@ -121,6 +120,26 @@ If you don't want to make use of javascript on your website
 or you really like DDG like me, you could set up a DuckDuckGo
 search form.
 
-## license
+## math
+You can use KaTeX for mathematical typesetting.
+Assets are only available if you opt-in on a per-page level through
+a single line (`math=true`) on the extra section of the page frontmatter.
 
+``` md
+# index.md
++++
+title="this page title"
+...
+
+[extra]
+math=true
++++
+
+Content
+```
+
+Pages wich doesn't opt-in are not affected in any way, so you doesn't have
+to worry about any performance hit.
+
+## license
 MIT. See `LICENSE.md` for more details.

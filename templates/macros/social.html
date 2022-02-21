@@ -1,9 +1,14 @@
 {% macro og_preview() %}
     <meta property="og:title" content="{{ social::og_title() | trim }}" />
     <meta property="og:type" content="website"/>
-    <meta property="og:url" content="{{ current_url }}"/>
     <meta property="og:description" content="{{ head::description() }}"/>
-    <meta property="og:image" content="{{ social::og_image() |trim }}"/>
+    <!--meta property="og:image" content="{{ social::og_image() |trim }}"/-->
+    {%- if current_url -%}
+        <meta property="og:url" content="{{ current_url }}"/>
+    {%- endif -%}
+    {%- if config.extra.og_preview_img -%}
+        <meta property="og:image" content="{{ get_url(path=config.extra.og_preview_img) }}"/>
+    {%- endif -%}
 {% endmacro og_preview %}
 
 {% macro twitter_preview() %}
@@ -46,7 +51,7 @@
   {%- endif -%}
 {% endmacro og_image %}
 
-{% macro og_title() %}
+{% macro og_title() -%}
     {{ config.title }} -&nbsp;
     {%- if section -%}
         {%- if section.title -%}

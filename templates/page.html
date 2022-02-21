@@ -1,6 +1,7 @@
 {% import "macros/pagination_page.html" as pagination_page -%}
 {% import "macros/head.html" as head -%}
 {% import "macros/utils.html" as utils -%}
+
 {% extends "index.html" -%}
 
 {%- block math -%}
@@ -31,12 +32,13 @@
         </figure>
         {% endif %}
 
-
         <div class="post-content">
             {{ page.content | safe }}
         </div>
 
         {%- block after_page -%}
+
+        {{ comments::comments() }}
         {# TODO: Decide if any sort of commenting functionality is desired? #}
         {#%- include "snippets/comments.html"  -%#}
 
