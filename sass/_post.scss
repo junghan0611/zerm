@@ -166,13 +166,14 @@
       color: var(--accent);
     }
 
-    &.twitter-tweet {
+    &.social, &.twitter-tweet {
       position: relative;
       background-color: var(--accent-alpha-10);
       font: inherit;
       color: inherit;
       border: 1px solid var(--accent);
       padding-top: 60px;
+      padding-right: 10px;
 
       p:before {
         content: '';
@@ -180,7 +181,6 @@
 
       &:before {
         font: inherit;
-        content: '> From Twitter:';
         position: absolute;
         top: 20px;
         left: inherit;
@@ -191,34 +191,64 @@
       a {
         color: var(--accent);
       }
-    } // blockquote for twitter shortcode
 
-    &.facebook-post {
+      &.twitter-tweet, &.tw {
+	&:before {
+          content: '> From Twitter:';
+	}
+      }  // twitter
+
+      &.fb {
+	&:before {
+          content: '> From Facebook:';
+	}
+      }
+
+    } // blockquote for social content (fb, tw...) shortcode
+
+    &.disclaimer {
       position: relative;
-      background-color: var(--accent-alpha-10);
       font: inherit;
       color: inherit;
-      border: 1px solid var(--accent);
       padding-top: 60px;
 
       p:before {
         content: '';
       }
-
       &:before {
         font: inherit;
-        content: '> From Facebook:';
+        content: '-> Disclaimer!';
         position: absolute;
         top: 20px;
         left: inherit;
-        color: var(--accent);
         font-weight: bold;
       }
 
-      a {
-        color: var(--accent);
+      &.red {
+      	border: 1px solid var(--red);
+
+	&:before {
+	  color:var(--red);
+  	}
+
+	a {
+          color: var(--red);
+      	}
+      }      
+
+      &.yellow {
+      	border: 1px solid var(--yellow);
+
+	&:before {
+	  color:var(--yellow);
+  	}
+
+	a {
+          color: var(--yellow);
+      	}
       }
-    }  // blockquote for facebook shortcodes
+      
+    }  // blockquote for disclaimer shortcodes
 
   } // blockquote for shortcodes
 }
