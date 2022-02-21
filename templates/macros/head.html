@@ -1,24 +1,15 @@
 {#- TODO:
-<<<<<<< HEAD
 - [x] add rss
 - [x] favicons
 - [x] media preview
 - [x] twitter
 - [ ] maybe google adsense
 -#}
-=======
-    - [x] add rss
-    - [x] favicons
-    - [x] media preview
-    - [ ] twitter
-    - [ ] maybe google adsense
-    -#}
-    
+   
 {% macro fonts() %}
     <link rel="preload" href="{{ get_url(path="/assets/fonts/FiraCode-Regular.woff2") }}" as="font" type="font/woff2" crossorigin="anonymous">
     <link rel="preload" href="{{ get_url(path="/assets/fonts/FiraCode-Bold.woff2") }}" as="font" type="font/woff2" crossorigin="anonymous">
 {% endmacro fonts %}
->>>>>>> upstream/master
 
 {% macro styling() %}
     <link rel="stylesheet" href="{{ get_url(path="style.css", cachebust=true) }}">
@@ -62,12 +53,6 @@ a[href^="https://"]:not(:where(
     {%- endif -%}
 {% endmacro rss %}
 
-<<<<<<< HEAD
-{% macro fonts() %}
-    <link rel="preload" href="/assets/fonts/FiraCode-Regular.woff" as="font" type="font/woff" crossorigin>
-    <link rel="preload" href="/assets/fonts/FiraCode-Bold.woff" as="font" type="font/woff" crossorigin>
-{% endmacro fonts %}
-
 {% macro description() %}
     {%- if section -%}
         {%-  if section.description -%}
@@ -88,8 +73,6 @@ a[href^="https://"]:not(:where(
     {%- endif -%}
 {% endmacro description %}
 
-=======
->>>>>>> upstream/master
 {% macro general_meta() %}
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -97,11 +80,7 @@ a[href^="https://"]:not(:where(
 {% endmacro general_meta %}
 
 {% macro katex() %}
-<<<<<<< HEAD
-  {% if config.extra.enable_katex %}
-=======
 {% if config.extra.enable_katex %}
->>>>>>> upstream/master
   <link rel="stylesheet" href="{{ get_url(path="assets/katex/katex.min.css") }}">
 
   <script defer type="text/javascript" src="{{ get_url(path="assets/katex/katex.min.js") | safe }}"></script>
@@ -116,9 +95,5 @@ a[href^="https://"]:not(:where(
 					{left: '\\[', right: '\\]', display: true}
 				]
 			});"></script>
-<<<<<<< HEAD
-  {% endif %}
-=======
 {% endif %}
->>>>>>> upstream/master
 {% endmacro katek %}
