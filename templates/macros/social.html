@@ -28,6 +28,9 @@
     {%- if page -%}
     {% if page.extra.cover_image %}
     <meta name="twitter:card" content="summary_large_image">
+      {% if page.extra.cover_caption %}
+        <meta name="twitter:image:alt" content="{{ page.extra.cover_caption }}">
+      {% endif %}
     {% else %}
     <meta name="twitter:card" content="summary">
     {%- endif -%}
@@ -36,23 +39,19 @@
     {%- endif -%}
 
     {% if config.extra.twitter_site -%}
-    <meta name="twitter:site" content="{{ config.extra.twitter_user }}">
+    <meta name="twitter:site" content="{{ config.extra.twitter_site }}">
     {%- endif -%}
 
     {% if page %}
     {%- if page.extra.twitter_user -%}
     <meta name="twitter:creator" content="{{ page.extra.twitter_user }}">
-    {%- endif -%}
-    {%- endif %}
-    {%- if config.extra.twitter_user %}
+    {%- elif config.extra.twitter_user -%}
     <meta name="twitter:creator" content="{{ config.extra.twitter_user }}">
-    {%- endif %}
-    <!--meta name="twitter:image:alt" content="{{ social::og_image() | trim }}"-->
+    {%- endif -%}{# ./if page.extra.twitter_user #}
+    {%- elif config.extra.twitter_user %}
+    <meta name="twitter:creator" content="{{ config.extra.twitter_user }}">
+    {%- endif %}{# ./if page #}
 {% endmacro twitter_preview %}
-
-{% macro og_image() %}
-
-{% endmacro og_image %}
 
 {% macro og_title() -%}
     {{ config.title }} -&nbsp;
