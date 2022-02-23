@@ -13,7 +13,9 @@
     {%- elif page.extra.cover_image -%}
       <meta property="og:image" content="{{ current_url ~ page.extra.cover_image | trim }}"/>
     {%- else -%}
-      <meta property="og:image" content="{{ get_url(path=config.extra.og_preview_img) | trim }}"/>
+      {%- if config.extra.og_preview_img -%}
+        <meta property="og:image" content="{{ get_url(path=config.extra.og_preview_img) | trim }}"/>
+      {%- endif -%}
     {%- endif -%}
   {%- endif -%}
 
