@@ -165,13 +165,19 @@
         color: var(--accent);
       }
 
-      &.twitter-tweet, &.tw {
+      img, video {
+	border: none;
+	padding-left: 0px;
+	padding-right: 10px;
+      }
+
+      &.twitter-tweet, &.tw, &.twitter {
 	&:before {
           content: '> From Twitter:';
 	}
       }  // twitter
 
-      &.fb {
+      &.fb, &.facebook {
 	&:before {
           content: '> From Facebook:';
 	}
