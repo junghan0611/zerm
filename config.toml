@@ -123,18 +123,26 @@ read_more = "read more"
 # Displayed for any blog post without description.
 read_post = "read post"
 
+# post-page contents
+support_us = true
 # Displayed on the separator of donation section, if you want this section
-support_us = "support us"
+# default to "support us"
+# support_us_prompt = "support us"
 
+follow_me = true
 # Displayed on the separator of follow me section, if you want this section
-follow_me = "follow me"
+# default to "follow me"
+# follow_me_prompt = "follow me"
 
+url_to_clipboard = true
 # Displayed before input group for copying to clipboard the present URL
-url_to_clipboard = "Copy this page URL to your clipboard"
+# default to "Copy this page URL to your clipboard"
+# url_to_clipboard_prompt = "Copy this page URL to your clipboard"
 
-# not currently used from previous theme, but leaving here for now in case I
-# feel like adding it.
-read_other_posts = "read other posts"
+# enable intra-post pagination
+post_view_navigation = true
+# default to "read other posts"
+# post_view_navigation_prompt = "read other posts"
 
 # Enable/Disable DDG search integration
 ddg_search = true
@@ -149,24 +157,24 @@ enable_katex = true
 # Set a language for your research
 # ddg_lang="en-en"
 
-# DDG colors
-# ddg_color_background
-# ddg_color_header
-# ddg_color_urls
-# ddg_color_text
-# ddg_color_links
-# ddg_color_visited
-
-# ddg_theme
-
-# Text size 
+# DDG Text size
 #   n for Large (default)
 #   l for Larger
 #   t for Largest
 #   m for Medium
-#   s for Small 
+#   s for Small
 
 ddg_text_size = "l"
+
+ddg_properties = [
+    {property="", name="ddg_color_background"},
+    {property="", name="ddg_color_header"},
+    {property="", name="ddg_color_urls"},
+    {property="", name="ddg_color_text"},
+    {property="", name="ddg_color_links"},
+    {property="", name="ddg_color_visited"},
+    {property="l", name="ddg_text_size"},
+]
 
 # Dark/Light mode switcher
 theme_switcher = true

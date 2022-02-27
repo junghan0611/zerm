@@ -1,4 +1,4 @@
-{% import "macros/pagination_page.html" as pagination_page -%}
+{% import "macros/pagination_page.html" as pagination -%}
 {% import "macros/head.html" as head -%}
 {% import "macros/utils.html" as utils -%}
 
@@ -39,8 +39,6 @@
         {%- block after_page -%}
 
         {{ comments::comments() }}
-        {# TODO: Decide if any sort of commenting functionality is desired? #}
-        {#%- include "snippets/comments.html"  -%#}
 
         {% if config.extra.support_us %}
         <div class="support_us">
@@ -59,7 +57,11 @@
 
         {% if config.extra.url_to_clipboard %}
         <div class="pagination__title">
-          <span class="pagination__title-h">{{ config.extra.url_to_clipboard }}</span>
+          {% if config.extra.url_to_clipboard_prompt %}
+          <span class="pagination__title-h">{{ config.extra.url_to_clipboard_prompt }}</span>
+          {% else %}
+          <span class="pagination__title-h">Copy this page URL to your clipboard</span>
+          {% endif %}
           <hr />
         </div>
 
@@ -70,7 +72,11 @@
 
         {% if config.extra.follow_me %}
         <div class="pagination__title">
-          <span class="pagination__title-h">{{ config.extra.follow_me }}</span>
+          {% if config.extra.url_to_clipboard_prompt %}
+          <span class="pagination__title-h">{{ config.extra.follow_me_prompt }}</span>
+          {% else %}
+          <span class="pagination__title-h">follow me</span>
+          {% endif %}
           <hr />
         </div>
 
@@ -93,5 +99,5 @@
 {%- endblock main -%}
 
 {%- block pagination -%}
-  {{ pagination_page::paginate() }}
+  {{ pagination::paginate(page=page) }}
 {%- endblock pagination -%}
