@@ -98,6 +98,19 @@
     @media (max-width: $phone-max-width) {
       padding: 10px;
     }
+
+    .img-wrapper {
+      background: linear-gradient(225deg, var(--accent-alpha-70) 0%, var(--accent) 70%, var(--accent) 100%);
+    }
+
+    img {
+      filter: grayscale(1);
+      mix-blend-mode: hard-light;
+
+      &:hover {
+        filter: none;
+      }
+    }
   }
 
   ul {

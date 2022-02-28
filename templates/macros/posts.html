@@ -123,18 +123,18 @@
   {% set img900 = resize_image(path=imgpath, op='fill', width=900, height=450) %} 
   {% set img1200 = resize_image(path=imgpath, op='fill', width=1200, height=600) %} 
 
-  <img
-  alt="{{ page.title | striptags }}"
-  class="post-cover
+  <div class="post-cover">
+    <div class="img-wrapper">
+      <img
+        alt="{{ page.title | striptags }}"
         {% if page.extra.cover_classes %}
-        {{ page.extra.cover_classes | join(sep=' ') }}
-        {% endif %}"
-  srcset="{{ img300.url | safe }} 300w,
-	  {{ img600.url | safe }} 600w,
-	  {{ img900.url | safe }} 900w,
- 	  {{ img1200.url | safe }} 1200w,"
-  sizes="(max-width: 800px) 90vw,
-          1200px">
+        class="{{ page.extra.cover_classes | join(sep=' ') }}"
+        {% endif %}
+        srcset="{{ img300.url | safe }} 300w, {{ img600.url | safe }} 600w,
+                {{ img900.url | safe }} 900w, {{ img1200.url | safe }} 1200w,"
+        sizes="(max-width: 800px) 90vw, 1200px">
+    </div>
+  </div>
 {% elif image is matching("[.](svg)$") %}
 <img class="image" loading="lazy" alt="{{ page.title }}" src="{{ page.permalink }}{{ image }}">
 {% endif %}

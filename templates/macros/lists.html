@@ -13,27 +13,25 @@
         {% if page.extra.cover_image %}
         {% if page.extra.cover_image is matching("[.](jpg|jpeg|png|gif)$") %}
         {% set parent_dir_rel_path = posts::parent_dir_rel_path(rel_path=page.relative_path) | trim %}
+
         {% set imgpath = parent_dir_rel_path ~ "/" ~ page.extra.cover_image %}
         {% set img300 = resize_image(path=imgpath, op='fill', width=300, height=150) %}
         {% set img600 = resize_image(path=imgpath, op='fill', width=600, height=300) %}
         {% set img900 = resize_image(path=imgpath, op='fill', width=900, height=450) %}
         {% set img1200 = resize_image(path=imgpath, op='fill', width=1200, height=600) %}
 
-        <a class="cover-link" href="{{ page.permalink }}">
-        <img
-        alt="{{ page.title | striptags }}"
-        class="post-cover
-              {%- if page.extra.cover_classes -%}
-              {{ page.extra.cover_classes | join(sep=' ') }}
-              {% endif %}"
-        srcset="{{ img300.url | safe }} 300w,
-                {{ img600.url | safe }} 600w,
-                {{ img900.url | safe }} 900w,
-                {{ img1200.url | safe }} 1200w,"
-        sizes="(max-width: 800px) 90vw,
-                1200px"
-        />
-        </a>
+        <div class="post-cover">
+            <div class="img-wrapper">
+                <img
+                    alt="{{ page.title | striptags }}"
+                    {% if page.extra.cover_classes %}
+                    class="{{ page.extra.cover_classes | join(sep=' ') }}"
+                    {% endif %}
+                    srcset="{{ img300.url | safe }} 300w, {{ img600.url | safe }} 600w,
+                            {{ img900.url | safe }} 900w, {{ img1200.url | safe }} 1200w,"
+                    sizes="(max-width: 800px) 90vw, 1200px">
+            </div>
+        </div>
         {% endif %}{# matching #}
         {% endif %}{# cover_image #}
         {% endif %}{# show_covers_in_lists #}
