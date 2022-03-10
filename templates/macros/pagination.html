@@ -3,7 +3,7 @@
         <div class="pagination__buttons">
             {% if paginator.previous -%}
                 <span class="button previous">
-                    <a href="{{ paginator.previous }}">
+                    <a href="{{ paginator.previous | safe }}">
                         <span class="button__icon">←</span>
                         <span class="button__text">newer</span>
                     </a>
@@ -13,7 +13,7 @@
             {% if paginator.next -%}
                 {# end of if-check for page.next #}
                 <span class="button next">
-                    <a href="{{ paginator.next }}">
+                    <a href="{{ paginator.next | safe }}">
                         <span class="button__text">older</span>
                         <span class="button__icon">→</span>
                     </a>

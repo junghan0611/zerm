@@ -6,8 +6,8 @@
         <h1 class="post-title">
             <a href="{{ page.permalink }}">{{ page.title }}</a>
         </h1>
-
         {{ posts::meta(page=page, author=config.extra.show_author) }}
+        {{ posts::langs(page=page) }}
 
         {% if config.extra.show_covers_in_lists %}
         {% if page.extra.cover_image %}
